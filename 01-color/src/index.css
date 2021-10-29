@@ -189,3 +189,73 @@ main {
   outline: 1px solid rgba(242, 138, 178, 0.8);
   cursor: pointer;
 }
+
+
+.image-app{
+  width: 200px;
+  border-radius: 20px;
+}
+
+
+
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+
+.navbar{
+  background-color: #06281e;
+  color: white;
+}
+.first{
+  width: 80vw;
+  max-width: 800px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+.bars-btn{
+  background-color: transparent;
+  border: none;
+  transition: 0.3s all linear;
+}
+.bars-btn:hover{
+  transform: scale(1.2);
+}
+.second.active{
+  height: 7rem;
+  transition: 0.3s all linear;
+}
+.second.active li:hover{
+  background-color: wheat;
+  padding: 0 1rem;
+  color: black;
+}
+.second{
+  height: 0;
+  overflow: hidden;
+  transition: 0.3s all linear;
+}
+.third{
+  display: none;
+}
+
+@media screen and (min-width:956px) {
+  .navbar{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .bars-btn{
+    display: none;
+  }
+  .first{
+    width: auto;
+    margin: 0;
+  }
+  .second,.third{
+    display: flex;
+  }
+}
