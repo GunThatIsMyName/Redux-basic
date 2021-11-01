@@ -1,14 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Modal from './modal';
-// import Navbar from './navbar';
-// import App from "./App"
-// import App1 from "./App1"
+import App from './App';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Modal />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
