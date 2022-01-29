@@ -1,6 +1,13 @@
 import React from "react";
+// Reudx-React
+import { connect } from "react-redux";
+
+// Component
 import CartItem from "./CartItem";
-const CartContainer = ({ cart = [] }) => {
+
+import {CLEAR_CART, REMOVE} from "../utils/action"
+
+const CartContainer = ({cart=[],total,dispatch}) => {
   if (cart.length === 0) {
     return (
       <section className="cart">
@@ -29,13 +36,19 @@ const CartContainer = ({ cart = [] }) => {
         <hr />
         <div className="cart-total">
           <h4>
-            total <span>$0.00</span>
+            total <span>${total}</span>
           </h4>
         </div>
-        <button className="btn clear-btn">clear cart</button>
+        <button  onClick={()=>dispatch({type:CLEAR_CART})} className="btn clear-btn">clear cart</button>
       </footer>
     </section>
   );
 };
 
-export default CartContainer;
+// Redux Higiger order components
+const mapToStateProps=(state)=>{
+  const {cart,total}=state;
+  return {total,cart};
+}
+
+export default connect(mapToStateProps)(CartContainer);
