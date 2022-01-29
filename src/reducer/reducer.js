@@ -1,4 +1,10 @@
-import { CLEAR_CART, DECREASE, INCREASE, REMOVE } from "../utils/action";
+import {
+  CLEAR_CART,
+  DECREASE,
+  GET_TOTALS,
+  INCREASE,
+  REMOVE,
+} from "../utils/action";
 import cartItems from "../cart-items";
 
 export const initailStore = {
@@ -34,6 +40,16 @@ const reducer = (state, action) => {
         return item.id !== action.payload;
       });
       return { ...state, cart: newList };
+    case GET_TOTALS:
+      let { amount, price } = state.cart.reduce(
+        (total, curr) => {
+          total.amount += curr.amount;
+          total.price += curr.amount * curr.price;
+          return total;
+        },
+        { amount: 0, price: 0 }
+      );
+      return { ...state, amount, total: price };
     default:
       return state;
   }

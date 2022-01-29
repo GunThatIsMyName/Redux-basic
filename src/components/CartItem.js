@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { DECREASE, INCREASE, REMOVE } from "../utils/action";
+import { BONUS, DECREASE, INCREASE, REMOVE } from "../utils/action";
 
 const CartItem = ({
   img,
@@ -10,6 +10,7 @@ const CartItem = ({
   remove,
   handleIncrease,
   handleDecrease,
+  toggle,
 }) => {
   return (
     <div className="cart-item">
@@ -44,6 +45,7 @@ const CartItem = ({
 
 export const mapDispatchToProps = (dispatch, ownProps) => {
   const { id } = ownProps;
+
   return {
     remove: () => dispatch({ type: REMOVE, payload: id }),
     handleIncrease: () => dispatch({ type: INCREASE, payload: id }),
