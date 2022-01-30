@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { selectedProduct } from '../redux/actions/productActions';
+import { removeSelectedProduct, selectedProduct } from '../redux/actions/productActions';
 
 function ProductDetail() {
   const {id:productId} = useParams();
@@ -22,13 +22,16 @@ function ProductDetail() {
 
   useEffect(()=>{
     if(productId && productId !== "")getSingleData();
+    return ()=>{
+      dispatch(removeSelectedProduct());
+    }
   },[productId])
 
   if(Object.keys(product).length === 0){
     return <h1>LOADING ... </h1>
   }
 
-  const {category,image,price,id,title}=product;
+  const {category,image,price,title}=product;
 
   return <div>
     <h1>{title}</h1>
